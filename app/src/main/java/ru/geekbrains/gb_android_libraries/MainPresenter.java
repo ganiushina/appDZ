@@ -1,4 +1,3 @@
-
 package ru.geekbrains.gb_android_libraries;
 
 
