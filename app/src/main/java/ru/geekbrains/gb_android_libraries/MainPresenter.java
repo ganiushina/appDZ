@@ -20,7 +20,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
     }
 
     public void counter1Click(int value){
-      getViewState().setButton1Text(calcValue(value));
+        getViewState().setButton1Text(calcValue(value));
     }
 
     public void counter2Click(int value){
@@ -29,18 +29,4 @@ public class MainPresenter extends MvpPresenter<MainView> {
     public void counter3Click(int value){
         getViewState().setButton3Text(calcValue(value));
     }
-
-//    public void counter3Click(int id){
-//        switch (id) {
-//            case R.id.btnCounter1:
-//                getViewState().setButtonText(0, calcValue(0));
-//                break;
-//            case R.id.btnCounter2:
-//                getViewState().setButtonText(1, calcValue(1));
-//                break;
-//            case R.id.btnCounter3:
-//                getViewState().setButtonText(2, calcValue(2));
-//                break;
-//        }
-//    }
 }
