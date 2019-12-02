@@ -1,6 +1,7 @@
 package ru.geekbrains.gb_android_libraries;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -24,8 +25,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @InjectPresenter
     MainPresenter presenter;
 
-    Button button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,31 +32,23 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btnCounter1})
-    public void onButton1Click(Button button) {
-        presenter.counter1Click(0);
-    }
-
-    @OnClick({R.id.btnCounter2})
-    public void onButton2Click(Button button) {
-        presenter.counter2Click(1);
-    }
-
-    @OnClick({R.id.btnCounter3})
-    public void onButton3Click(Button button) {
-        presenter.counter3Click(2);
+    @OnClick({R.id.btnCounter1, R.id.btnCounter2, R.id.btnCounter3})
+    public void onButtonClick(Button button) {
+        presenter.counterClick(button.getId());
     }
 
     @Override
-    public void setButton1Text(int value) {
-        buttonOne.setText(String.format(getString(R.string.count_format), value));
-    }
-    @Override
-    public void setButton2Text(int value) {
-        buttonTwo.setText(String.format(getString(R.string.count_format), value));
-    }
-    @Override
-    public void setButton3Text(int value) {
-        buttonThree.setText(String.format(getString(R.string.count_format), value));
+    public void setButtonText(int index, int value) {
+        switch (index) {
+            case 0:
+                buttonOne.setText(String.format(getString(R.string.count_format), value));
+                break;
+            case 1:
+                buttonTwo.setText(String.format(getString(R.string.count_format), value));
+                break;
+            case 2:
+                buttonThree.setText(String.format(getString(R.string.count_format), value));
+                break;
+        }
     }
 }

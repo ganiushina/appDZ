@@ -9,38 +9,28 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
     private Model model = new Model();
 
+
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
     }
 
-    private int calcValue(int index){
+    public int calcValue(int index){
         model.setAt(index, model.getAt(index) + 1);
         return model.getAt(index);
     }
 
-    public void counter1Click(int value){
-      getViewState().setButton1Text(calcValue(value));
+    public void counterClick(int id){
+        switch (id) {
+            case R.id.btnCounter1:
+                getViewState().setButtonText(0, calcValue(0));
+                break;
+            case R.id.btnCounter2:
+                getViewState().setButtonText(1, calcValue(1));
+                break;
+            case R.id.btnCounter3:
+                getViewState().setButtonText(2, calcValue(2));
+                break;
+        }
     }
-
-    public void counter2Click(int value){
-        getViewState().setButton2Text(calcValue(value));
-    }
-    public void counter3Click(int value){
-        getViewState().setButton3Text(calcValue(value));
-    }
-
-//    public void counter3Click(int id){
-//        switch (id) {
-//            case R.id.btnCounter1:
-//                getViewState().setButtonText(0, calcValue(0));
-//                break;
-//            case R.id.btnCounter2:
-//                getViewState().setButtonText(1, calcValue(1));
-//                break;
-//            case R.id.btnCounter3:
-//                getViewState().setButtonText(2, calcValue(2));
-//                break;
-//        }
-//    }
 }
